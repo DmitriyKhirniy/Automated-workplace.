@@ -1,19 +1,46 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class API {
+public class API extends JFrame{
     private static Map<String, Product> hashTable;
-    public static void main( String[] args )
-    {
 
+    public void StartAPI()
+    {
         loadAPI();
         for (Map.Entry entry: hashTable.entrySet()) {
             Object value = entry.getValue();
             System.out.println(" || "+ value.toString() );
         }
+        InitComponents();
         //closeAPI();
+    };
 
+    public void InitComponents()
+    {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(1356, 370));
+       // panel.setLayout(null);
+    };
 
+    public API()
+    {
+        super("Automated workplace");
+        StartAPI();
+    };
+
+    public static void main( String[] args )
+    {
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame.setDefaultLookAndFeelDecorated(true);
+                API  frame = new API();
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        });
     };
 
     private static void loadAPI()

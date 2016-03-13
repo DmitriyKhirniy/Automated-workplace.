@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -7,7 +8,7 @@ public class Files {
     private static String directoryPath = "E://laba/";
     private static String fileName = "Products1.txt";
 
-    public static void write( Map<String, Product> hashTable ) {
+    public static void write(List<Product> products) {
         //Определяем файл
         File file = new File(directoryPath + fileName);
 
@@ -22,9 +23,9 @@ public class Files {
 
             try {
                 //Записываем текст у файл
-                for (Map.Entry entry : hashTable.entrySet()) {
-                    Object value = entry.getValue();
-                    out.print(value.toString() + " | ");
+                for (Product product : products ){
+
+                    out.print(product.toString() + " | ");
                 }
             } finally {
                 //После чего мы должны закрыть файл
@@ -53,7 +54,7 @@ public class Files {
                         if( s.charAt(i) != '|' )string.append(s.charAt(i));
                         else {
                             System.out.println("In Files:"+string);
-                            API.addToHashTable( getProduct(new String( string)) );
+                            API.addToList(getProduct(new String( string)) );
                             string = new StringBuilder();
                         }
                     }

@@ -109,4 +109,9 @@ public class Product {
         }
         return string;
     };
+
+    public double getResultPrize()
+    {
+        return this.prize * this.quantity;
+    };
 }
